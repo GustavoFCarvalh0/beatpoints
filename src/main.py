@@ -5,6 +5,7 @@ print("------  BeatPoints  ------")
 print("\n 1. Sem se identificar\n 2. Se identificar para ganhar pontos\n")
 
 def main():
+  print('Oiii')
   cadastro()
 
 main()
