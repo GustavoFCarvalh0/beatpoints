@@ -1,32 +1,34 @@
 import json
 import os
 
+
 def cadastrar_entradas():
+    entrada_json = os.path.join(os.path.dirname(__file__), 'entrada.json')
+    
     print("\n\n----- Cadastro de Entradas -----")
     
-    
-    entrada_json = os.path.join(os.path.dirname(__file__), 'entrada.json')
+    #verifica se o arquivo entrada.json está vazio ou não existe.
 
-    if not os.path.exists(entrada_json):
+    if not os.path.exists(entrada_json) or os.path.getsize(entrada_json) == 0: 
         with open(entrada_json, 'w') as f:
             json.dump([], f)
 
-    if os.path.getsize(entrada_json) > 0:
-        with open(entrada_json, 'r') as f:
-            entradas = json.load(f)
-    else:
-        entradas = []
+    with open(entrada_json, 'r') as f:
+        entradas = json.load(f)
 
     nome_entrada = input("\nDigite o nome do entrada: ")
+    valor_entrada = float(input("Digite o valor do entrada: "))
+    beatpoints_entrada = int(input("Digite os pontos BeatPoints do entrada: "))
     
     # Determinando o ID do nova entrada
     if entradas:
-        novo_id = max(entrada.get('id', 0) for entrada in entradas) + 1 #Caso ja tenha produto cadastro incrementa mais 1 no id do novo entrada
+        #Caso ja tenha produto cadastro incrementa mais 1 no id do novo entrada
+        novo_id = max(entrada.get('id', 0) for entrada in entradas) + 1 
     else:
         novo_id = 1
 
-    nova_entrada = {'id': novo_id, 'nome': nome_entrada}
-    entradas.append(nova_entrada)
+    novo_entrada = {'id': novo_id, 'nome': nome_entrada, 'valor': valor_entrada, 'beatpoints': beatpoints_entrada}
+    entradas.append(novo_entrada)
 
     with open(entrada_json, 'w') as f:
         json.dump(entradas, f, indent=2)
@@ -37,27 +39,39 @@ def cadastrar_entradas():
 def listar_entradas():
     print("\n\n----- Lista de Entradas -----")
     
-    
     entrada_json = os.path.join(os.path.dirname(__file__), 'entrada.json')
-
+    
     if not os.path.exists(entrada_json) or os.path.getsize(entrada_json) == 0:
         print("Nenhum entrada cadastrado.")
         return
 
     with open(entrada_json, 'r') as f:
-        entradas = json.load(f)
+        try:
+            entradas = json.load(f)
+        except json.JSONDecodeError as e:
+            print(f"Erro ao carregar dados do arquivo JSON: {e}")
+            return
+
+    if not entradas:
+        print("Nenhum entrada cadastrado.")
+        return
 
     print("Lista de entradas:")
     for entrada in entradas:
-        if 'id' in entrada and 'nome' in entrada:
-            print(f"{entrada['id']}. {entrada['nome']}")
+        if isinstance(entrada, dict) and all(key in entrada for key in ['id', 'nome', 'valor', 'beatpoints']) and isinstance(entrada['nome'], str) and isinstance(entrada['valor'], (int, float)) and isinstance(entrada['beatpoints'], int):
+            print(f"Id: {entrada['id']}, Nome: {entrada['nome']}, Valor: {entrada['valor']}, BeatPoints: {entrada['beatpoints']}")
         else:
-            print("entrada inválido: ", entrada)
+            print(f"Erro: Informações incompletas ou inválidas do entrada: {entrada}")
+            
+            
+    
+
 
 def editar_entradas():
-    print("\n\n----- Editar Entrada -----")
-
+    
+    print("\n\n----- Editar entrada -----")
     entrada_json = os.path.join(os.path.dirname(__file__), 'entrada.json')
+    
 
     if not os.path.exists(entrada_json) or os.path.getsize(entrada_json) == 0:
         print("Nenhum entrada cadastrado para editar.")
@@ -78,8 +92,12 @@ def editar_entradas():
             print(f"\nVocê selecionou editar o entrada '{entradas[opcao - 1]['nome']}'.")
             
             novo_nome = input("Digite o novo nome do entrada: ")
+            novo_valor = float(input("Digite o novo valor do entrada: "))
+            novos_beatpoints = int(input("Digite os novos pontos BeatPoints do entrada: "))
 
             entradas[opcao - 1]['nome'] = novo_nome
+            entradas[opcao - 1]['valor'] = novo_valor
+            entradas[opcao - 1]['beatpoints'] = novos_beatpoints
 
             with open(entrada_json, 'w') as f:
                 json.dump(entradas, f, indent=2)
@@ -89,16 +107,14 @@ def editar_entradas():
             print("\nOpção inválida!")
     except ValueError:
         print("\nOpção inválida! Digite um número inteiro.")
-
-    # Após a edição, voltar ao menu principal
-    return
-
+        
 
 def excluir_entradas():
     print("\n\n----- Excluir Entrada -----")
+    
 
     entrada_json = os.path.join(os.path.dirname(__file__), 'entrada.json')
-
+    
     if not os.path.exists(entrada_json) or os.path.getsize(entrada_json) == 0:
         print("Nenhum entrada cadastrado.")
         return
@@ -123,26 +139,4 @@ def excluir_entradas():
             print("\nOpção inválida!")
     except ValueError:
         print("\nOpção inválida! Digite um número inteiro.")
-        
-while True:
-    print("\n\nEscolha uma opção:")
-    print("1. Cadastrar")
-    print("2. Listar")
-    print("3. Editar")
-    print("4. Excluir")
-    print("5. Sair")
-    opcao = input("\nDigite o número da opção desejada: ")
 
-    if opcao == '1':
-        cadastrar_entradas()
-    elif opcao == '2':
-        listar_entradas()
-    elif opcao == '3':
-        editar_entradas()
-    elif opcao == '4':
-        excluir_entradas()
-    elif opcao == '5':
-        print("\nAté mais!")
-        break
-    else:
-        print("\nOpção inválida. Tente novamente.")

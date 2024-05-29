@@ -1,67 +1,119 @@
 import time
 from cadastro import cadastro
-from crude_pratos import mostrar_pratos
 
-#função do crude entradas 
-from crude_entradas import cadastrar_entradas
-from crude_entradas import listar_entradas
-from crude_entradas import editar_entradas
-from crude_entradas import excluir_entradas
+# Funções para o CRUD de entradas
+from entradas import cadastrar_entradas, listar_entradas, editar_entradas, excluir_entrada
 
-#função do crude pratos 
-from crude_pratos import cadastrar_pratos
-from crude_pratos import listar_pratos
-from crude_pratos import editar_pratos
-from crude_pratos import excluir_pratos
+# Funções para o CRUD de pratos
+from pratos import cadastrar_pratos, listar_pratos, editar_pratos, excluir_pratos
 
-#função do crude bebidas
-from crude_bebidas import cadastrar_bebidas
-from crude_bebidas import listar_bebidas
-from crude_bebidas import editar_bebidas
-from crude_bebidas import excluir_bebidas
+# Funções para o CRUD de bebidas
+from bebidas import cadastrar_bebidas, listar_bebidas, editar_bebidas, excluir_bebidas
 
-#função do crude sobremesas
-from crude_sobremesas import cadastrar_sobremesas
-from crude_sobremesas import listar_sobremesas
-from crude_sobremesas import editar_sobremesas
-from crude_sobremesas import excluir_sobremesas
+# Funções para o CRUD de sobremesas
+from sobremesas import cadastrar_sobremesas, listar_sobremesas, editar_sobremesas, excluir_sobremesas
 
 print("------  BeatPoints  ------")
 print("\n 1. Sem se identificar\n 2. Se identificar para ganhar pontos\n")
 
 def main():
-  #print('Oiii')
-  #cadastro()
-  
-  #chamando a função para Entradas
-  cadastrar_entradas()
-  listar_entradas()
-  editar_entradas()
-  #excluir_entradas()
-  
-  #chamando a função para pratos
-  #cadastrar_pratos() 
-  #listar_pratos()
-  #editar_pratos()
-  #excluir_pratos()
-  mostrar_pratos()
-  
-  #chamando a função para bebidas
-  #cadastrar_bebidas()
-  #listar_bebidas()
-  #editar_bebidas()
-  #excluir_bebidas()
-  
-  #chamando a função para sobremesas
-  #cadastrar_sobremesas()
-  #listar_sobremesas()
-  #editar_sobremesas()
-  #excluir_sobremesas()
+    if __name__ == "__main__":
+        while True:
+            print("\nOpções:")
+            print("1. Cadastrar")
+            print("2. Listar")
+            print("3. Editar")
+            print("4. Excluir")
+            print("5. Sair")
 
-  
- 
+            opcao = input("Digite o número da opção desejada: ")
 
-main()
+            if opcao == '1':
+                print("\nOpções de cadastro:")
+                print("1. Cadastrar Entradas")
+                print("2. Cadastrar Pratos")
+                print("3. Cadastrar Bebidas")
+                print("4. Cadastrar Sobremesas")
+
+                sub_opcao = input("Digite o número da opção desejada: ")
+                if sub_opcao == '1':
+                    cadastrar_entradas()
+                elif sub_opcao == '2':
+                    cadastrar_pratos()
+                elif sub_opcao == '3':
+                    cadastrar_bebidas()
+                elif sub_opcao == '4':
+                    cadastrar_sobremesas()
+                else:
+                    print("Opção inválida!")
+
+            elif opcao == '2':
+                print("\nOpções de listagem:")
+                print("1. Listar Entradas")
+                print("2. Listar Pratos")
+                print("3. Listar Bebidas")
+                print("4. Listar Sobremesas")
+
+                sub_opcao = input("Digite o número da opção desejada: ")
+                if sub_opcao == '1':
+                    listar_entradas()
+                elif sub_opcao == '2':
+                    listar_pratos()
+                elif sub_opcao == '3':
+                    listar_bebidas()
+                elif sub_opcao == '4':
+                    listar_sobremesas()
+                else:
+                    print("Opção inválida!")
+
+            elif opcao == '3':
+                print("\nOpções de edição:")
+                print("1. Editar Entradas")
+                print("2. Editar Pratos")
+                print("3. Editar Bebidas")
+                print("4. Editar Sobremesas")
+
+                sub_opcao = input("Digite o número da opção desejada: ")
+                if sub_opcao == '1':
+                    editar_entradas()
+                elif sub_opcao == '2':
+                    editar_pratos()
+                elif sub_opcao == '3':
+                    editar_bebidas()
+                elif sub_opcao == '4':
+                    editar_sobremesas()
+                else:
+                    print("Opção inválida!")
+
+            elif opcao == '4':
+                print("\nOpções de exclusão:")
+                print("1. Excluir Entradas")
+                print("2. Excluir Pratos")
+                print("3. Excluir Bebidas")
+                print("4. Excluir Sobremesas")
+
+                sub_opcao = input("Digite o número da opção desejada: ")
+                if sub_opcao == '1':
+                    excluir_entrada()
+                elif sub_opcao == '2':
+                    excluir_pratos()
+                elif sub_opcao == '3':
+                    excluir_bebidas()
+                elif sub_opcao == '4':
+                    excluir_sobremesas()
+                else:
+                    print("Opção inválida!")
+
+            elif opcao == '5':
+                print("Saindo do programa...")
+                break
+
+            else:
+                print("Opção inválida!")
+
+if __name__ == "__main__":
+    main()
+    
 # opcao_cadastro = int(input("Selecione uma opção: "))
 # while opcao_cadastro != 1 and opcao_cadastro != 2:
 #   print("\nOpção invalida, tente novamente!\n")
