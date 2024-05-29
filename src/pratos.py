@@ -3,7 +3,7 @@ import os
 
 
 def cadastrar_pratos():
-    prato_json = os.path.join(os.path.dirname(__file__), 'prato.json')
+    prato_json = os.path.join(os.path.dirname(__file__), 'db/prato.json')
     
     print("\n\n----- Cadastro de Pratos -----")
     

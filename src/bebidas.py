@@ -3,7 +3,7 @@ import os
 
 
 def cadastrar_bebidas():
-    bebida_json = os.path.join(os.path.dirname(__file__), 'bebida.json')
+    bebida_json = os.path.join(os.path.dirname(__file__), 'db/bebida.json')
     
     print("\n\n----- Cadastro de Bebida -----")
     

@@ -3,7 +3,7 @@ import os
 
 
 def cadastrar_sobremesas():
-    sobremesa_json = os.path.join(os.path.dirname(__file__), 'sobremesa.json')
+    sobremesa_json = os.path.join(os.path.dirname(__file__), 'db/sobremesa.json')
     
     print("\n\n----- Cadastro de Sobremesa -----")
     

@@ -3,7 +3,7 @@ import os
 
 
 def cadastrar_entradas():
-    entrada_json = os.path.join(os.path.dirname(__file__), 'entrada.json')
+    entrada_json = os.path.join(os.path.dirname(__file__), 'db/entrada.json')
     
     print("\n\n----- Cadastro de Entradas -----")
     
