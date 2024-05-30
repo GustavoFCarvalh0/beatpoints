@@ -18,4 +18,5 @@ def cadastro():
     json.dump(usuarios, f, indent=2)
   
   print("\nUsuário criado com sucesso!")
+  
 
