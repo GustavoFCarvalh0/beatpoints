@@ -3,11 +3,11 @@ import os
 
 
 def cadastrar_sobremesas():
-    sobremesa_json = os.path.join(os.path.dirname(__file__), 'db/sobremesa.json')
+    sobremesa_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/sobremesa.json')
     
     print("\n\n----- Cadastro de Sobremesa -----")
     
-    #verifica se o arquivo sobremesa.json está vazio ou não existe.
+    #verifica se o arquivo db/sobremesa.json está vazio ou não existe.
 
     if not os.path.exists(sobremesa_json) or os.path.getsize(sobremesa_json) == 0: 
         with open(sobremesa_json, 'w') as f:
@@ -39,7 +39,7 @@ def cadastrar_sobremesas():
 def listar_sobremesas():
     print("\n\n----- Lista de Sobremesas -----")
     
-    sobremesa_json = os.path.join(os.path.dirname(__file__), 'sobremesa.json')
+    sobremesa_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/sobremesa.json')
     
     if not os.path.exists(sobremesa_json) or os.path.getsize(sobremesa_json) == 0:
         print("Nenhum sobremesa cadastrado.")
@@ -70,7 +70,7 @@ def listar_sobremesas():
 def editar_sobremesas():
     
     print("\n\n----- Editar sobremesa -----")
-    sobremesa_json = os.path.join(os.path.dirname(__file__), 'sobremesa.json')
+    sobremesa_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/sobremesa.json')
     
 
     if not os.path.exists(sobremesa_json) or os.path.getsize(sobremesa_json) == 0:
@@ -113,7 +113,7 @@ def excluir_sobremesas():
     print("\n\n----- Excluir Sobremesa -----")
     
 
-    sobremesa_json = os.path.join(os.path.dirname(__file__), 'sobremesa.json')
+    sobremesa_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/sobremesa.json')
     
     if not os.path.exists(sobremesa_json) or os.path.getsize(sobremesa_json) == 0:
         print("Nenhum sobremesa cadastrado.")
