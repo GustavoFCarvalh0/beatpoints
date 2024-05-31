@@ -3,11 +3,11 @@ import os
 
 
 def cadastrar_bebidas():
-    bebida_json = os.path.join(os.path.dirname(__file__), 'db/bebida.json')
+    bebida_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/bebida.json')
     
     print("\n\n----- Cadastro de Bebida -----")
     
-    #verifica se o arquivo bebida.json está vazio ou não existe.
+    #verifica se o arquivo db/bebida.json está vazio ou não existe.
 
     if not os.path.exists(bebida_json) or os.path.getsize(bebida_json) == 0: 
         with open(bebida_json, 'w') as f:
@@ -39,7 +39,7 @@ def cadastrar_bebidas():
 def listar_bebidas():
     print("\n\n----- Lista de Bebidas -----")
     
-    bebida_json = os.path.join(os.path.dirname(__file__), 'bebida.json')
+    bebida_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/bebida.json')
     
     if not os.path.exists(bebida_json) or os.path.getsize(bebida_json) == 0:
         print("Nenhum bebida cadastrado.")
@@ -70,7 +70,7 @@ def listar_bebidas():
 def editar_bebidas():
     
     print("\n\n----- Editar Bebida -----")
-    bebida_json = os.path.join(os.path.dirname(__file__), 'bebida.json')
+    bebida_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/bebida.json')
     
 
     if not os.path.exists(bebida_json) or os.path.getsize(bebida_json) == 0:
@@ -113,7 +113,7 @@ def excluir_bebidas():
     print("\n\n----- Excluir Bebida -----")
     
 
-    bebida_json = os.path.join(os.path.dirname(__file__), 'bebida.json')
+    bebida_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/bebida.json')
     
     if not os.path.exists(bebida_json) or os.path.getsize(bebida_json) == 0:
         print("Nenhum bebida cadastrado.")
