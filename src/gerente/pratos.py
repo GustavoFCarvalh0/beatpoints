@@ -3,11 +3,11 @@ import os
 
 
 def cadastrar_pratos():
-    prato_json = os.path.join(os.path.dirname(__file__), 'db/prato.json')
+    prato_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/db/prato.json')
     
     print("\n\n----- Cadastro de Pratos -----")
     
-    #verifica se o arquivo prato.json está vazio ou não existe.
+    #verifica se o arquivo db/prato.json está vazio ou não existe.
 
     if not os.path.exists(prato_json) or os.path.getsize(prato_json) == 0: 
         with open(prato_json, 'w') as f:
@@ -39,7 +39,7 @@ def cadastrar_pratos():
 def listar_pratos():
     print("\n\n----- Lista de Pratos -----")
     
-    prato_json = os.path.join(os.path.dirname(__file__), 'prato.json')
+    prato_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/prato.json')
     
     if not os.path.exists(prato_json) or os.path.getsize(prato_json) == 0:
         print("Nenhum prato cadastrado.")
@@ -70,7 +70,7 @@ def listar_pratos():
 def editar_pratos():
     
     print("\n\n----- Editar Prato -----")
-    prato_json = os.path.join(os.path.dirname(__file__), 'prato.json')
+    prato_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/prato.json')
     
 
     if not os.path.exists(prato_json) or os.path.getsize(prato_json) == 0:
@@ -113,7 +113,7 @@ def excluir_pratos():
     print("\n\n----- Excluir Prato -----")
     
 
-    prato_json = os.path.join(os.path.dirname(__file__), 'prato.json')
+    prato_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/prato.json')
     
     if not os.path.exists(prato_json) or os.path.getsize(prato_json) == 0:
         print("Nenhum prato cadastrado.")

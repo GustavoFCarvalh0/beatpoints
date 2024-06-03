@@ -3,11 +3,11 @@ import os
 
 
 def cadastrar_entradas():
-    entrada_json = os.path.join(os.path.dirname(__file__), 'db/entrada.json')
+    entrada_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/entrada.json')
     
     print("\n\n----- Cadastro de Entradas -----")
     
-    #verifica se o arquivo entrada.json está vazio ou não existe.
+    #verifica se o arquivo db/entrada.json está vazio ou não existe.
 
     if not os.path.exists(entrada_json) or os.path.getsize(entrada_json) == 0: 
         with open(entrada_json, 'w') as f:
@@ -39,8 +39,7 @@ def cadastrar_entradas():
 def listar_entradas():
     print("\n\n----- Lista de Entradas -----")
     
-    entrada_json = os.path.join(os.path.dirname(__file__), 'entrada.json')
-    
+    entrada_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/entrada.json')
     if not os.path.exists(entrada_json) or os.path.getsize(entrada_json) == 0:
         print("Nenhum entrada cadastrado.")
         return
@@ -70,7 +69,7 @@ def listar_entradas():
 def editar_entradas():
     
     print("\n\n----- Editar entrada -----")
-    entrada_json = os.path.join(os.path.dirname(__file__), 'entrada.json')
+    entrada_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/entrada.json')
     
 
     if not os.path.exists(entrada_json) or os.path.getsize(entrada_json) == 0:
@@ -113,7 +112,7 @@ def excluir_entradas():
     print("\n\n----- Excluir Entrada -----")
     
 
-    entrada_json = os.path.join(os.path.dirname(__file__), 'entrada.json')
+    entrada_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/entrada.json')
     
     if not os.path.exists(entrada_json) or os.path.getsize(entrada_json) == 0:
         print("Nenhum entrada cadastrado.")

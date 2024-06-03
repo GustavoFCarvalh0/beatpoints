@@ -6,12 +6,6 @@
     "beatpoints": 3
   },
   {
-    "id": 2,
-    "nome": "Prato 2",
-    "valor": 11.0,
-    "beatpoints": 3
-  },
-  {
     "id": 3,
     "nome": "Prato 3",
     "valor": 12.0,
