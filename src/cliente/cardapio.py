@@ -1,9 +1,9 @@
 import json
 import os
 
-def carregar_menu():
+def carregar_menu(caminho):
     # Atribuindo a variável o caminho do arquivo .json dinamicamente
-    caminho = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(_file_))), f'db/entrada.json')
+    caminho = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), f'db/{caminho}')
 
     # Verifica se o arquivo existe
     if not os.path.exists(caminho):
@@ -24,10 +24,11 @@ def exibir_opcoes(opcoes):
         print("Nenhuma opção disponível.")
         return
     for opcao in opcoes:
-        print(f"{opcao['id']}. {opcao['nome']} - R${opcao['preco']:.2f}")
+        print(opcao)
+        print(f"{opcao['id']}. {opcao['nome']} - R${opcao['valor']:.2f}")
         
         
-def cardapio_main():
+def cardapio():
     # Carrega os menus a partir dos arquivos JSON
     entradas = carregar_menu('entradas.json')
     pratos = carregar_menu('pratos.json')

@@ -2,6 +2,7 @@ from cadastro import cadastro
 from entrar import entrar
 import getpass
 from gerente.main import gerente_main
+from cliente.main import cliente_main
 
 usuario_logado_cpf = None
 
@@ -34,6 +35,7 @@ def main():
             identificacao()
         else:
             print("Opção inválida!")
+        cliente_main()
 
 resp = 's'
 while resp.lower() != 'n':
