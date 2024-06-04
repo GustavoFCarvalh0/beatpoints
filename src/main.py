@@ -1,4 +1,5 @@
 from cadastro import cadastro
+from cliente.carrinho import adicionar_carrinho, remover_carrinho, esvaziar_carrinho, listar_carrinho
 from entrar import entrar
 import getpass
 from gerente.main import gerente_main
@@ -17,6 +18,7 @@ def identificacao():
             print("Você ganhou 10 pontos! 🎉")
 
 def main():
+    esvaziar_carrinho()
     name = input("Qual o tipo de usuário você é? (1 - Gerente / 2 - Cliente) ")
     if name == '1':
         codGerent = "equipe10"
