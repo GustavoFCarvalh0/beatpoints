@@ -1,6 +1,7 @@
 from cadastro import cadastro
 from cliente.carrinho import adicionar_carrinho, remover_carrinho, esvaziar_carrinho, listar_carrinho
 from entrar import entrar
+import getpass
 from gerente.main import gerente_main
 
 usuario_logado_cpf = None
@@ -19,7 +20,12 @@ def main():
     esvaziar_carrinho()
     name = input("Qual o tipo de usuário você é? (1 - Gerente / 2 - Cliente) ")
     if name == '1':
-        gerente_main()
+        codGerent = "equipe10"
+        codGerent = getpass.getpass("\nDigite o código de acesso: ")
+        if codGerent == "equipe10":
+            gerente_main()
+        else:
+            print("\nVocê não tem permissão!")
     else:
         print("------  BeatPoints  ------")
         print("\n 1. Sem se identificar\n 2. Se identificar para ganhar pontos\n")
@@ -31,4 +37,10 @@ def main():
         else:
             print("Opção inválida!")
 
-main()
+resp = 's'
+while resp.lower() != 'n':
+    resp = input("\nDigite 'n' para finalizar: ")
+    main()
+    
+print("Volte sempre!")
+    
