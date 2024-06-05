@@ -77,7 +77,7 @@ def listar_carrinho():
     soma_valor = 0
     soma_beatpoints = 0
     soma_qtd = 0
-    print("********CARRINHO********")
+    print("\n------ Seu carrinho de compras ------")
     for item in carrinho:
         print(f"Nome: {item["nome"]}")
         print(f"Valor: R$ {(item["valor"])}")
@@ -90,3 +90,16 @@ def listar_carrinho():
     print(f"Valor total: {soma_valor}")
     print(f"Beatpoints total: {soma_beatpoints}")
     print(f"Quantidade total: {soma_qtd}")
+
+def finalizar_compra():
+    carrinho = carregar_carrinho()
+    soma_valor = 0
+    soma_beatpoints = 0
+    soma_qtd = 0
+    for item in carrinho:
+        soma_valor += item["valor"]
+        soma_beatpoints += item["beatpoints"]
+        soma_qtd += item["qtd"]
+    esvaziar_carrinho()
+    print("\nCompra finalizada com sucesso!\n")
+    return { 'valor': soma_valor, 'bp': soma_beatpoints, 'qtd': soma_qtd }
