@@ -1,6 +1,6 @@
 import json
 import os
-import uuid
+import secrets
 
 def cadastrar_entradas():
     entrada_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/entrada.json')
@@ -20,7 +20,7 @@ def cadastrar_entradas():
     valor_entrada = float(input("Digite o valor do entrada: "))
     beatpoints_entrada = int(input("Digite os pontos BeatPoints do entrada: "))
     
-    novo_id = str(uuid.uuid4())
+    novo_id = str(secrets.token_hex(6))
     novo_entrada = {'id': novo_id, 'nome': nome_entrada, 'valor': valor_entrada, 'beatpoints': beatpoints_entrada}
     entradas.append(novo_entrada)
 

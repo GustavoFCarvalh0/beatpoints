@@ -1,6 +1,6 @@
 import json
 import os
-import uuid
+import secrets
 
 def cadastrar_pratos():
     prato_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/prato.json')
@@ -17,7 +17,7 @@ def cadastrar_pratos():
     valor_prato = float(input("Digite o valor do prato: "))
     beatpoints_prato = int(input("Digite os pontos BeatPoints do prato: "))
     
-    novo_id = str(uuid.uuid4())
+    novo_id = str(secrets.token_hex(6))
     novo_prato = {'id': novo_id, 'nome': nome_prato, 'valor': valor_prato, 'beatpoints': beatpoints_prato}
     pratos.append(novo_prato)
 

@@ -1,6 +1,6 @@
 import json
 import os
-import uuid
+import secrets
 
 def cadastrar_sobremesas():
     sobremesa_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/sobremesa.json')
@@ -20,7 +20,7 @@ def cadastrar_sobremesas():
     valor_sobremesa = float(input("Digite o valor do sobremesa: "))
     beatpoints_sobremesa = int(input("Digite os pontos BeatPoints do sobremesa: "))
     
-    novo_id = str(uuid.uuid4())
+    novo_id = str(secrets.token_hex(6))
     novo_sobremesa = {'id': novo_id, 'nome': nome_sobremesa, 'valor': valor_sobremesa, 'beatpoints': beatpoints_sobremesa}
     sobremesas.append(novo_sobremesa)
 

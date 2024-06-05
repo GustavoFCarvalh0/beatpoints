@@ -1,6 +1,6 @@
 import json
 import os
-import uuid
+import secrets
 
 def cadastrar_bebidas():
     bebida_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/bebida.json')
@@ -20,7 +20,7 @@ def cadastrar_bebidas():
     valor_bebida = float(input("Digite o valor do bebida: "))
     beatpoints_bebida = int(input("Digite os pontos BeatPoints do bebida: "))
     
-    novo_id = str(uuid.uuid4())
+    novo_id = str(secrets.token_hex(6))
     novo_bebida = {'id': novo_id, 'nome': nome_bebida, 'valor': valor_bebida, 'beatpoints': beatpoints_bebida}
     bebidas.append(novo_bebida)
 
