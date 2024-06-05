@@ -77,6 +77,7 @@ def cliente_main():
             listar_carrinho()
 
         elif opcao == '6':
+            listar_carrinho()
             sub_opcao = input("Digite o id do item para remover ou 'v' para voltar: ")
             if sub_opcao.lower() == 'v':
                 continue

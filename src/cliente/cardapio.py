@@ -24,5 +24,8 @@ def exibir_opcoes(opcoes):
         print("Nenhuma opção disponível.")
         return
     for opcao in opcoes:
-        print(opcao)
-        print(f"{opcao['id']}. {opcao['nome']} - R${opcao['valor']:.2f}")
+        print(f"Nome: {opcao['nome']}")
+        print(f"\tId: {opcao['id']}")
+        print(f"\tValor: {opcao['valor']}")
+        print(f"\tBeatPoints: {opcao['beatpoints']}")
+

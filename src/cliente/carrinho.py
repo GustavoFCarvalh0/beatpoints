@@ -79,10 +79,11 @@ def listar_carrinho():
     soma_qtd = 0
     print("\n------ Seu carrinho de compras ------")
     for item in carrinho:
-        print(f"Nome: {item["nome"]}")
-        print(f"Valor: R$ {(item["valor"])}")
-        print(f"Beatpoints: {item["beatpoints"]}")
-        print(f"Quantidade: {item["qtd"]}")
+        print(f"Nome: {item['nome']}")
+        print(f"\tId: {item['id']}")
+        print(f"\tValor: {item['valor']}")
+        print(f"\tBeatPoints: {item['beatpoints']}")
+        print(f"\tQuantidade: {item["qtd"]}")
         print("----------------------")
         soma_valor += item["valor"]
         soma_beatpoints += item["beatpoints"]
