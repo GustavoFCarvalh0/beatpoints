@@ -1,24 +1,28 @@
 from cadastro import cadastro
-from cliente.carrinho import adicionar_carrinho, remover_carrinho, esvaziar_carrinho, listar_carrinho
+from cliente .carrinho import esvaziar_carrinho
 from entrar import entrar
 import getpass
 from gerente.main import gerente_main
 from cliente.main import cliente_main
-
-usuario_logado_cpf = None
+import sys
+import os
+import json
 
 def identificacao():
     opcao = input("Digite '1' para entrar ou '2' para se cadastrar: ")
     if opcao == '1':
-        global usuario_logado_cpf
-        usuario_logado_cpf = entrar()
+        entrar()
     elif opcao == '2':
-        cpf = cadastro()
-        if cpf:
-            print("Você ganhou 10 pontos! 🎉")
+        cadastro()
+
+def deslogar_usuario():
+    usuario_json = os.path.join(os.path.dirname(__file__), 'db/usuario_logado.json')
+    with open(usuario_json, 'w') as f:
+        json.dump({}, f)
 
 def main():
     esvaziar_carrinho()
+    deslogar_usuario()
     name = input("Qual o tipo de usuário você é? (1 - Gerente / 2 - Cliente) ")
     if name == '1':
         codGerent = "equipe10"
@@ -29,20 +33,21 @@ def main():
             print("\nVocê não tem permissão!")
     else:
         print("------  BeatPoints  ------")
-        print("\n 1. Sem se identificar\n 2. Se identificar para ganhar pontos\n")
+        print("\n 1. Se identificar para ganhar pontos\n 2. Sem se identificar\n")
         opcao = input("Digite o número da opção desejada: ")
         if opcao == '1':
-            print("Você não irá ganhar pontos 😢")
-        elif opcao == '2':
             identificacao()
+        elif opcao == '2':
+            print("😢 Você não irá ganhar pontos...")
         else:
             print("Opção inválida!")
+            return
         cliente_main()
 
-resp = 's'
-while resp.lower() != 'n':
-    resp = input("\nDigite 'n' para finalizar: ")
+while True:
     main()
-    
-print("Volte sempre!")
-    
+    resposta = input("\n😊 Deseja continuar o programa (S/N): ")
+    if resposta.lower() == 'n':
+        print("🎉 Volte sempre!")
+        sys.exit()
+
