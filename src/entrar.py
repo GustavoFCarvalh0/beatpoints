@@ -16,7 +16,15 @@ def entrar():
   for usuario in usuarios:
     if usuario['cpf'] == cpf and usuario['senha'] == senha:
       print("\nBem vindo!", usuario['nome'])
-      return usuario['cpf']
+      logarUsuario(cpf)
+      return
 
-  print("\nCredencias inválidas! Usuário não encontrado 😢")
-  return ''
+  print("\n😢 Credencias inválidas! Usuário não encontrado...")
+
+def logarUsuario(cpf: str):
+  usuario_json = os.path.join(os.path.dirname(__file__), 'db/usuario_logado.json')
+
+  with open(usuario_json, 'w') as f:
+    json.dump({'cpf': cpf}, f)
+
+  return {}
