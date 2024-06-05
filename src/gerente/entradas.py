@@ -1,6 +1,6 @@
 import json
 import os
-
+import uuid
 
 def cadastrar_entradas():
     entrada_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/entrada.json')
@@ -20,13 +20,7 @@ def cadastrar_entradas():
     valor_entrada = float(input("Digite o valor do entrada: "))
     beatpoints_entrada = int(input("Digite os pontos BeatPoints do entrada: "))
     
-    # Determinando o ID do nova entrada
-    if entradas:
-        #Caso ja tenha produto cadastro incrementa mais 1 no id do novo entrada
-        novo_id = max(entrada.get('id', 0) for entrada in entradas) + 1 
-    else:
-        novo_id = 1
-
+    novo_id = str(uuid.uuid4())
     novo_entrada = {'id': novo_id, 'nome': nome_entrada, 'valor': valor_entrada, 'beatpoints': beatpoints_entrada}
     entradas.append(novo_entrada)
 

@@ -1,14 +1,11 @@
 import json
 import os
-
+import uuid
 
 def cadastrar_pratos():
-    prato_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/db/prato.json')
-    
+    prato_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/prato.json')
     print("\n\n----- Cadastro de Pratos -----")
     
-    #verifica se o arquivo db/prato.json está vazio ou não existe.
-
     if not os.path.exists(prato_json) or os.path.getsize(prato_json) == 0: 
         with open(prato_json, 'w') as f:
             json.dump([], f)
@@ -20,13 +17,7 @@ def cadastrar_pratos():
     valor_prato = float(input("Digite o valor do prato: "))
     beatpoints_prato = int(input("Digite os pontos BeatPoints do prato: "))
     
-    # Determinando o ID do nova prato
-    if pratos:
-        #Caso ja tenha produto cadastro incrementa mais 1 no id do novo prato
-        novo_id = max(prato.get('id', 0) for prato in pratos) + 1 
-    else:
-        novo_id = 1
-
+    novo_id = str(uuid.uuid4())
     novo_prato = {'id': novo_id, 'nome': nome_prato, 'valor': valor_prato, 'beatpoints': beatpoints_prato}
     pratos.append(novo_prato)
 

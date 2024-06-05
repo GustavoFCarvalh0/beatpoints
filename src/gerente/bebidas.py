@@ -1,6 +1,6 @@
 import json
 import os
-
+import uuid
 
 def cadastrar_bebidas():
     bebida_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/bebida.json')
@@ -20,13 +20,7 @@ def cadastrar_bebidas():
     valor_bebida = float(input("Digite o valor do bebida: "))
     beatpoints_bebida = int(input("Digite os pontos BeatPoints do bebida: "))
     
-    # Determinando o ID do nova bebida
-    if bebidas:
-        #Caso ja tenha produto cadastro incrementa mais 1 no id do novo bebida
-        novo_id = max(bebida.get('id', 0) for bebida in bebidas) + 1 
-    else:
-        novo_id = 1
-
+    novo_id = str(uuid.uuid4())
     novo_bebida = {'id': novo_id, 'nome': nome_bebida, 'valor': valor_bebida, 'beatpoints': beatpoints_bebida}
     bebidas.append(novo_bebida)
 

@@ -1,6 +1,6 @@
 import json
 import os
-
+import uuid
 
 def cadastrar_sobremesas():
     sobremesa_json = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/sobremesa.json')
@@ -20,13 +20,7 @@ def cadastrar_sobremesas():
     valor_sobremesa = float(input("Digite o valor do sobremesa: "))
     beatpoints_sobremesa = int(input("Digite os pontos BeatPoints do sobremesa: "))
     
-    # Determinando o ID do nova sobremesa
-    if sobremesas:
-        #Caso ja tenha produto cadastro incrementa mais 1 no id do novo sobremesa
-        novo_id = max(sobremesa.get('id', 0) for sobremesa in sobremesas) + 1 
-    else:
-        novo_id = 1
-
+    novo_id = str(uuid.uuid4())
     novo_sobremesa = {'id': novo_id, 'nome': nome_sobremesa, 'valor': valor_sobremesa, 'beatpoints': beatpoints_sobremesa}
     sobremesas.append(novo_sobremesa)
 
@@ -62,9 +56,6 @@ def listar_sobremesas():
             print(f"Id: {sobremesa['id']}, Nome: {sobremesa['nome']}, Valor: {sobremesa['valor']}, BeatPoints: {sobremesa['beatpoints']}")
         else:
             print(f"Erro: Informações incompletas ou inválidas do sobremesa: {sobremesa}")
-            
-            
-    
 
 
 def editar_sobremesas():
@@ -107,7 +98,7 @@ def editar_sobremesas():
             print("\nOpção inválida!")
     except ValueError:
         print("\nOpção inválida! Digite um número inteiro.")
-        
+
 
 def excluir_sobremesas():
     print("\n\n----- Excluir Sobremesa -----")
@@ -139,11 +130,3 @@ def excluir_sobremesas():
             print("\nOpção inválida!")
     except ValueError:
         print("\nOpção inválida! Digite um número inteiro.")
-        
-    
-  
-  
-  
-  
-  
-  
